@@ -1,6 +1,7 @@
 # monorepo
+모노레포를 최대한 빠르게 만들어보자
 
-## 순서
+## 순서 (Commit 순)
 
 1. yarn set version berry (폴더 초기화)
 2. yarn init (폴더 초기화)
