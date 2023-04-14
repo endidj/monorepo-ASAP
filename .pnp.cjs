@@ -16,6 +16,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."\
       },\
       {\
+        "name": "@monorepo/common",\
+        "reference": "workspace:package/common"\
+      },\
+      {\
         "name": "project1",\
         "reference": "workspace:package/project1"\
       }\
@@ -23,6 +27,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
+      ["@monorepo/common", ["workspace:package/common"]],\
       ["monorepo", ["workspace:."]],\
       ["project1", ["workspace:package/project1"]]\
     ],\
@@ -721,6 +726,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jridgewell/sourcemap-codec", "npm:1.4.14"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@monorepo/common", [\
+        ["workspace:package/common", {\
+          "packageLocation": "./package/common/",\
+          "packageDependencies": [\
+            ["@monorepo/common", "workspace:package/common"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["@nodelib/fs.scandir", [\
@@ -2456,6 +2470,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./package/project1/",\
           "packageDependencies": [\
             ["project1", "workspace:package/project1"],\
+            ["@monorepo/common", "workspace:package/common"],\
             ["@types/react", "npm:18.0.35"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@vitejs/plugin-react", "virtual:9f264d900cd9873a104417466a3ab13ed75a1583730d3c18408f4f3385d8582ce5419dff9b8ae03d3a240583e5f68d8831df334d3aa40833c7017855090f7fda#npm:3.1.0"],\
